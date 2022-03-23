@@ -33,12 +33,6 @@ jobs:
         with:
           path: ~/local/rubies
           key: ruby-2.6.5
-      - uses: clupprich/ruby-build-action@master
-        id: ruby
-        with:
-          ruby-version: 2.6.5
-          files: app/build/outputs/apk/release/app-release.apk
-
       # 上传至firim
       - name: install fir.im
         run: gem install fir-cli
