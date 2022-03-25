@@ -1,0 +1,35 @@
+plugins {
+    id 'groovy'
+    id 'maven-publish'
+    id 'kotlin'
+}
+
+group = 'github.xujhin' //组
+version = '1.0.0' //版本
+
+dependencies {
+    implementation "com.android.tools.build:gradle:7.3.0-alpha07"
+    implementation gradleApi() //必须
+    implementation localGroovy() //必须
+}
+repositories {
+    mavenCentral() //必须
+    mavenLocal() // 使用默认的本地仓库
+}
+
+////将插件打包上传到本地maven仓库
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+publishing {
+    repositories {
+        maven {
+            url "../repo"
+        }
+    }
+}
+
